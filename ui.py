@@ -39,3 +39,22 @@ def add_tasks():
 
     write_tasks()
 
+
+def delete_tasks():
+    id_del = input("id:")
+    i=-1
+    for x in tasks:
+        i+=1
+        if x['id'] == int(id_del):
+            del tasks[i]
+
+    write_tasks()
+
+
+def update_tasks():
+    id_del = input("id:")
+    for x in tasks:
+        if x['id'] == int(id_del):
+            x['done'] = True
+
+    write_tasks()
