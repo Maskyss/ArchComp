@@ -2,7 +2,16 @@ import menu
 
 
 def check(num):
-    # checking menu
+    commands = {
+        '1': ui.print_tasks,
+        '2': ui.add_tasks,
+        '3': delete_tasks,
+        '4': update_tasks
+    }
+    if num in commands:
+        commands[num]()
+    else:
+        return num
 
 
 def controll():
