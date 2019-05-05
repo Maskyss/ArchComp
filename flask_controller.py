@@ -70,3 +70,12 @@ def delete_task(task_id):
         abort(404)
     tasks.remove(task[0])
     return jsonify({'result': True})
+
+
+
+def running():
+    app.run(debug=True)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
