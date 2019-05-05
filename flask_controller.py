@@ -46,3 +46,27 @@ def create_task():
     }
     tasks.append(task)
     return jsonify({'task': task}), 201
+
+
+@app.route('/tasks/<int:task_id>', methods=['PUT'])
+def update_task(task_id):
+    task = list(filter(lambda t: t['id'] == task_id, tasks))
+    if len(task) == 0:
+        abort(404)
+    if not request.json:
+        abort(400)
+    task[0]['title'] = request.json.get('title', task[0]['title'])
+    task[0]['done'] = request.json.get('done', task[0]['done'])
+    task[0]['day'] = request.json.get('day', task[0]['day']),
+    task[0]['month'] = request.json.get('month', task[0]['month']),
+    task[0]['year'] = request.json.get('year', task[0]['year'])
+    return jsonify({'task': task[0]})
+
+
+@app.route('/tasks/<int:task_id>', methods=['DELETE'])
+def delete_task(task_id):
+    task = list(filter(lambda t: t['id'] == task_id, tasks))
+    if len(task) == 0:
+        abort(404)
+    tasks.remove(task[0])
+    return jsonify({'result': True})
