@@ -72,7 +72,6 @@ def delete_task(task_id):
     return jsonify({'result': True})
 
 
-
 def running():
     app.run(debug=True)
 
