@@ -22,6 +22,22 @@ class PythonApi(unittest.TestCase):
         else:
             print("Test 'item()' FAIL at " + str(utc))
 
+    def test_create_item(self):
+        utc = arrow.utcnow()
+
+        item = {"title": "Reading",
+                        "done": "False",
+                        "day": "2",
+                        "month": "44",
+                        "year": "2019"}
+
+        res = requests.post('http://127.0.0.1:5000/tasks', data=item)
+
+        if res.status_code == 201:
+            print("Test 'create_item()' PASS at " + str(utc))
+        else:
+            print("Test 'create_item()' FAIL at " + str(utc))
+        
 
 if __name__ == "__main__":
     unittest.main()
