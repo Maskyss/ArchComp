@@ -54,6 +54,15 @@ class PythonApi(unittest.TestCase):
         else:
             print("Test 'update_item()' FAIL at " + str(utc))
 
+    def test_delete_item(self):
+        utc = arrow.utcnow()
 
+        res = requests.delete('http://127.0.0.1:5000/tasks/2')
+        if res.status_code == 200:
+            print("Test 'delete_measurements()' PASS at " + str(utc))
+        else:
+            print("Test 'delete_measurements()' FAIL at " + str(utc))
+
+            
 if __name__ == "__main__":
     unittest.main()
